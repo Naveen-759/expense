@@ -21,6 +21,7 @@ app.use("/api/users", require("./routes/userRoutes"));
 
 app.use(errorHandler);
 
+// app.get("/", (req, res) => res.json({ success: "ok" }));
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {

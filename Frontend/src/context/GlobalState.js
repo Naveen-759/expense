@@ -75,12 +75,15 @@ export const GlobalProvider = ({ children }) => {
 
   const deleteTransaction = async (id) => {
     try {
-      await fetch(`http://localhost:5001/api/expense-tracker/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/expense-tracker/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       console.log("Deleted successfully");
       getTransactions();
     } catch (error) {
@@ -96,7 +99,7 @@ export const GlobalProvider = ({ children }) => {
   // }
   const addTransaction = async (newTransaction) => {
     const response = await fetch(
-      "http://localhost:5001/api/expense-tracker/addtransaction",
+      "${process.env.REACT_APP_BACKEND_URL}/api/expense-tracker/addtransaction",
       {
         method: "POST",
         headers: {
@@ -119,7 +122,7 @@ export const GlobalProvider = ({ children }) => {
   const userAuthentication = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5001/api/users/current-user",
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/current-user`,
         {
           method: "GET",
           headers: {
@@ -139,7 +142,7 @@ export const GlobalProvider = ({ children }) => {
   const getTransactions = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5001/api/expense-tracker/",
+        `${process.env.REACT_APP_BACKEND_URL}/api/expense-tracker/`,
         {
           method: "GET",
           headers: {

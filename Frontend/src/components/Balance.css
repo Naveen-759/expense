@@ -1,0 +1,61 @@
+.balance {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.balance-amt {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Base button styles */
+.pdf-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, #ff6b6b, #f06595);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button hover effect */
+.pdf-button:hover {
+    background: linear-gradient(45deg, #f06595, #ff6b6b);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Ripple effect */
+.pdf-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.pdf-button:active::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .pdf-button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
